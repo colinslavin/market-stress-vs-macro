@@ -40,6 +40,7 @@ The composite stress index is designed as a structural monitoring tool, not an o
 - Z-score normalization
 - Equal weights
 - Percentile-based regimes (not thresholds)
+
 The CSI is evaluated on detection timing, stability, and interpretability rather than return outcomes.
 
 ## Macro Regimes as Slow State Estimation
@@ -48,6 +49,7 @@ Macro regimes are treated as slow-moving state estimators of the economic enviro
 - Explicit publication lag
 - Designed to capture persistence, not onset
 - Evaluated on duration alignment, not early warning
+
 In this framework, macro regimes are not expected to lead stress events, but to contextualize and validate their persistence.
 
 ## Design Constraints
@@ -57,7 +59,7 @@ In this framework, macro regimes are not expected to lead stress events, but to 
 - All regime boundaries fixed ex ante
 
 ## Evaluation Framework
-No performance metrics (Sharpe, CAGR) are used. Performance metrics are intentionally excluded to avoid conflating stress detection quality with portfolio construction choices.
+No performance metrics (Sharpe, CAGR) are used. Performance metrics are intentionally excluded to avoid conflating stress detection quality with portfolio construction choices. Data choices are intentionally conservative and minimal. Indicators are selected to represent stress mechanisms rather than to maximize predictive power.
 ### Timing & detection
 - Stress onset → signal trigger latency
 - Signal trigger → drawdown trough
