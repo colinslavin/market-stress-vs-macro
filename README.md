@@ -1,78 +1,112 @@
-## Macro regimes and market stress signals operate on different clocks.
-Macro data estimates the economic state with structural lag, making it ill-suited for detecting sudden market stress. Market stress indicators react to fast-moving mechanisms such as volatility repricing, correlation breakdown, and liquidity withdrawal. This project compares the timing, behavior, and failure modes of slow macro regimes versus fast market stress detectors during sudden and prolonged stress episodes, framing both as complementary layers in a risk monitoring system rather than alpha-generating strategies.
+# Macro Regimes vs Market Stress  
+**Fast Instability Detection vs Slow State Estimation**
 
-## What this project is/is not
+## Thesis
+Macro regimes and market stress signals operate on different clocks.
+
+Macro data estimates the economic state with structural lag, making it ill-suited for detecting sudden market stress. Market stress indicators react to fast-moving mechanisms such as volatility repricing, correlation breakdown, liquidity withdrawal, and tail-risk amplification.
+
+This project compares the timing, behavior, and failure modes of slow macro regimes versus fast market stress detectors across sudden and prolonged stress episodes. The analysis frames them as **complementary layers in a risk monitoring system**, not alpha-generating strategies.
+
+---
+
+## What This Project Is / Is Not
+
 ### IS
-- Systems-level risk diagnostics
-- Stress detection vs state estimation
-- Timing, latency, persistence, and failure modes
-- Explainable, rule-based signals
+- Systems-level risk diagnostics  
+- Stress detection vs state estimation  
+- Timing, latency, persistence, and failure modes  
+- Explainable, rule-based signals  
 
 ### IS NOT
-- A trading strategy
-- Optimized weights or thresholds
-- A Sharpe-maximization exercise
-- A claim of return improvement
+- A trading strategy  
+- Optimized weights or thresholds  
+- A Sharpe-maximization exercise  
+- A claim of return improvement  
+
+---
 
 ## Market Stress: Conceptual Definition
-Market stress is defined as a rapid deterioration in market functioning, characterized by uncertainty repricing, correlation convergence, liquidity withdrawal, and nonlinear return behavior. Stress is a property of the market system, not simply poor returns.
+Market stress is defined as a rapid deterioration in market functioning, characterized by:
+- Uncertainty repricing
+- Correlation convergence and diversification failure
+- Liquidity withdrawal and forced trading
+- Nonlinear tail-risk amplification
 
-- Uncertainty / convexity demand
-- Diversification breakdown
-- Forced trading and liquidity stress
-- Tail-risk amplification
+Stress is a property of the market system, not simply poor returns.
 
-| Mechanism               | Indicator Family | Examples (not exhaustive)          |
-| ----------------------- | ---------------- | ---------------------------------- |
-| Uncertainty repricing   | Volatility       | VIX level, VIX momentum            |
-| Diversification failure | Correlation      | Avg pairwise correlation           |
-| Disagreement / herding  | Dispersion       | Cross-sectional return dispersion  |
-| Liquidity stress        | Volume           | Volume spikes, down/up volume      |
-| Nonlinearity            | Tails            | Skewness, kurtosis, tail frequency |
+| Mechanism               | Indicator Family | Examples |
+|------------------------|------------------|----------|
+| Uncertainty repricing   | Volatility       | VIX level, realized volatility |
+| Diversification failure | Correlation      | Avg pairwise correlation |
+| Disagreement / herding  | Dispersion       | Cross-sectional return dispersion |
+| Liquidity stress        | Volume           | Volume anomalies |
+| Nonlinearity            | Tails            | Downside tail frequency |
 
-- All indicators must be observable in real time
-- No future information
-- No optimization across indicators
-- Higher value = more stress
+Design rules:
+- Indicators must be observable in real time
+- No future information or revised data
+- No parameter optimization
+- Higher values always indicate more stress
 
-## Composite Stress Index (CSI) Philosophy
-The composite stress index is designed as a structural monitoring tool, not an optimized signal. Indicators are normalized to a common scale and equally weighted to avoid parameter mining. The objective is robustness and interpretability rather than performance maximization.
-- Z-score normalization
-- Equal weights
-- Percentile-based regimes (not thresholds)
+---
 
-The CSI is evaluated on detection timing, stability, and interpretability rather than return outcomes.
+## Composite Stress Index (CSI)
+The Composite Stress Index aggregates fast market stress indicators into a single monitoring construct.
 
-## Macro Regimes as Slow State Estimation
-Macro regimes are treated as slow-moving state estimators of the economic environment. Their value lies in identifying persistence and structural backdrops, not in detecting abrupt market stress.
-- Monthly or quarterly frequency
+**Design principles**
+- Rolling normalization (no hindsight)
+- Equal weighting (robustness over optimization)
+- Percentile-based regimes (adaptive, not hard-coded)
+
+The CSI is evaluated on **timing, stability, and interpretability**, not returns.
+
+---
+
+## Macro Regimes
+Macro regimes are treated as **slow-moving state estimators**:
+- Monthly frequency
 - Explicit publication lag
 - Designed to capture persistence, not onset
 - Evaluated on duration alignment, not early warning
 
-In this framework, macro regimes are not expected to lead stress events, but to contextualize and validate their persistence.
+Macro regimes are not expected to lead stress events, but to contextualize and validate their persistence.
 
-## Design Constraints
-- No lookahead or revised data
-- Indicators must be computable in real time
-- No parameter tuning based on outcomes
-- All regime boundaries fixed ex ante
+---
 
 ## Evaluation Framework
-No performance metrics (Sharpe, CAGR) are used. Performance metrics are intentionally excluded to avoid conflating stress detection quality with portfolio construction choices. Data choices are intentionally conservative and minimal. Indicators are selected to represent stress mechanisms rather than to maximize predictive power.
-### Timing & detection
+
+### Timing & Detection
 - Stress onset → signal trigger latency
 - Signal trigger → drawdown trough
 - Signal trigger → recovery
+
 ### Quality
 - False positive rate
 - Persistence in stress states
 - Stability across parameter variations
+
 ### Conditioning
 - Forward volatility by state
-- Tail loss probability by state
+- Downside probability by state
 - Correlation levels by state
 
+No performance metrics (Sharpe, CAGR) are used.
+
+---
+
 ## Stress Taxonomy
-- Sudden shocks (fast onset, fast resolution)
-- Prolonged stress (slow burn, persistent)
+- **Sudden shocks:** fast onset, fast resolution (e.g., COVID)
+- **Prolonged stress:** slow burn, persistent instability (e.g., GFC, tightening cycles)
+
+---
+
+## Key Insight
+> Macro regimes and market stress signals are not substitutes.  
+> They are complementary components of a robust risk monitoring system.
+
+---
+
+## Status
+Analysis complete.  
+No further tuning or optimization planned.
