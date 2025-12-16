@@ -13,7 +13,7 @@ def main() -> None:
     market = fetch_market_data(
         start=start,
         end=end,
-        equity_ticker=MARKET.ticker_equity,
+        panel_tickers=MARKET.panel_tickers,
         vix_ticker=MARKET.ticker_vix,
     )
 

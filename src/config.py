@@ -1,12 +1,19 @@
 from __future__ import annotations
-
 from dataclasses import dataclass
 
 
 @dataclass(frozen=True)
 class MarketConfig:
-    ticker_equity: str = "SPY"      # equity proxy
-    ticker_vix: str = "^VIX"        # volatility proxy
+    ticker_equity: str = "SPY"
+    ticker_vix: str = "^VIX"
+
+    # Small liquid panel for cross-sectional correlation/dispersion proxies
+    # (reproducible; no constituent dataset needed)
+    panel_tickers = (
+        "SPY",
+        "XLB", "XLE", "XLF", "XLI", "XLK",
+        "XLP", "XLU", "XLV", "XLY",
+    )
 
 
 @dataclass(frozen=True)
